@@ -3,12 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Bull Racing Game</title>
+    <title>Red Bull Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style to highlight selected options */
+        .occasion-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            width: 50%;
+        }
+
+        .occasion-option input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .occasion-option.checked {
+            background-color: lightblue;
+            color: white;
+        }
+
+        /* Adjust layout for two columns */
+        #occasion-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Canvas element will be added here -->
-    <script src="game.js"></script> <!-- Link to the JavaScript file -->
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
-    <script src="game.js"></script>
+    <header>
+        <h1>Red Bull Game</h1>
+    </header>
+    <main>
+        <!-- Existing form -->
+        <form id="adminForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="college">College:</label>
+            <input type="text" id="college" name="college" required>
+            <label for="consume">Do you consume Red Bull?</label>
+            <select id="consume" name="consume">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label for="occasions">Occasions of consumption:</label>
+            <div id="occasion-options">
+                <div class="occasion-option">
+                    <input type="checkbox" id="studying" name="occasions[]" value="Studying">
+                    <label for="studying">Studying</label>
+                </div>
+                <div class="occasion-option">
+                    <input type="checkbox" id="working" name="occasions[]" value="Working">
+                    <label for="working">Working</label>
+                </div>
+                <div class="occasion-option">
+                    <input type="checkbox" id="gaming" name="occasions[]" value="Gaming">
+                    <label for="gaming">Gaming</label>
+                </div>
+                <div class="occasion-option">
+                    <input type="checkbox" id="partying" name="occasions[]" value="Partying">
+                    <label for="partying">Partying</label>
+                </div>
+                <div class="occasion-option">
+                    <input type="checkbox" id="exercising" name="occasions[]" value="Exercising">
+                    <label for="exercising">Exercising</label>
+                </div>
+                <div class="occasion-option">
+                    <input type="checkbox" id="driving" name="occasions[]" value="Driving">
+                    <label for="driving">Driving</label>
+                </div>
+                <div class="occasion-option">
+                    <input type="checkbox" id="traveling" name="occasions[]" value="Traveling">
+                    <label for="traveling">Traveling</label>
+                </div>
+                <div class="occasion-option">
+                    <input type="checkbox" id="others" name="occasions[]" value="Others">
+                    <label for="others">Others</label>
+                </div>
+            </div>
+            <button type="submit">Start Game</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Red Bull Game</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
