@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Game Over</h2>
+        <h3>Form Submissions:</h3>
+        <table id="formSubmissionsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>College</th>
+                    <th>Consume Red Bull</th>
+                    <th>Occasions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Form submissions data will be inserted here dynamically -->
+            </tbody>
+        </table>
+        <br>
+        <button id="exitButton">Exit</button>
+    </main>
+
+    <script>
+        // Function to fetch form submissions data and populate the table
+        function populateFormSubmissions() {
+            // Retrieve form data from localStorage
+            const playerName = localStorage.getItem('playerName');
+            const playerCollege = localStorage.getItem('playerCollege');
+            const consumeRedBull = localStorage.getItem('consumeRedBull');
+            const occasionsOfConsumption = JSON.parse(localStorage.getItem('occasionsOfConsumption'));
+
+            // Check if occasionsOfConsumption is available and not empty
+            const occasions = Array.isArray(occasionsOfConsumption) && occasionsOfConsumption.length > 0 ?
+                occasionsOfConsumption.join(', ') : 'N/A';
+
+            // Create a row for the form submission
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${playerName}</td>
+                <td>${playerCollege}</td>
+                <td>${consumeRedBull}</td>
+                <td>${occasions}</td>
+            `;
+
+            // Append the row to the table body
+            const tableBody = document.querySelector('#formSubmissionsTable tbody');
+            tableBody.appendChild(row);
+        }
+
+        // Populate form submissions data when the page loads
+        window.onload = populateFormSubmissions;
+
+        // Add event listener to exit button
+        document.getElementById('exitButton').addEventListener('click', function() {
+            window.close(); // Close the window/tab
+        });
+    </script>
+</body>
+</html>
